@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 12:40:48
+ * Last Modified: 2021-11-15 05:29:42
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -13,8 +13,14 @@
 
 <template>
   <div class="header-wrap">
+    <span class="toggle-btn" @click="toggleNav">
+        <Svg-Icon v-show="!navOpend" name="indent" color="#fff"></Svg-Icon>
+        <Svg-Icon v-show="navOpend" name="outdent" color="#fff"></Svg-Icon>
+      </span>
     <el-dropdown class="menu-wrap">
-      <span>xxx</span>
+      <span class="img-btn-wrap">
+        xxx
+      </span>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>Action 1</el-dropdown-item>
@@ -29,24 +35,50 @@
 </template>
 
 <script>
+import SvgIcon from '@/components/svg_icon/svgIcon.vue'
+import { getTokenByName } from '@/utils/cookie.js'
+
 export default {
-  name: 'header'
+  name: 'Header',
+  data() {
+    return {
+      navOpend: true
+    }
+  },
+  onMounted() {
+    this.navOpend = getTokenByName('navOpend')
+  },
+  methods: {
+    toggleNav() {
+      this.navOpend = !this.navOpend
+      // store.commit('app/SET_NAV_OPEND', this.navOpend)
+    }
+  },
+  components: {
+    SvgIcon
+  }
 }
 </script>
 
 <style lang='scss' scoped>
 .header-wrap {
-  width: 100%;
-  height: 100%;
   position: relative;
   background-color: grey;
 }
 .menu-wrap {
-  height: 100%;
   position: absolute;
   right: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;;
+  height: 100%;
+
+  .img-btn-wrap {
+    height: 60px;
+    line-height: 60px;
+  }
+}
+.toggle-btn {
+  height: 60px;
+  line-height: 60px;
+  margin-left: 30px;
+  cursor: pointer;
 }
 </style>

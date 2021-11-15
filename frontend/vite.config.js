@@ -3,10 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import viteSvgIcons from 'vite-plugin-svg-icons'
 // import ElementPlus from 'unplugin-element-plus/vite'
-import dotenv from 'dotenv'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   define: {
     'process.env': process.env
@@ -29,6 +28,12 @@ export default defineConfig({
     // ElementPlus({
     //   useSource: true,
     // }),
+    viteSvgIcons({
+      // Specify the icon folder to be cached
+      iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
+      // Specify symbolId format
+      symbolId: 'icon-[dir]-[name]'
+    }),
     Components({
       resolvers: [
         ElementPlusResolver({

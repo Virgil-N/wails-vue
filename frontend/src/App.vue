@@ -1,16 +1,10 @@
 <template>
   <div class="root">
-    <div class="header-wrap">
-      <Header></Header>
-    </div>
-    <div class="wrap">
-      <div class="left-nav-wrap">
-      <Top-Nav></Top-Nav>
+    <div class="nav-wrap">
+      <Nav></Nav>
     </div>
     <div class="main-wrap">
-      <div class="drawer-wrap">
-        <!-- drawer -->
-      </div>
+      <Header class="header"></Header>
       <div class="content-wrap">
         <transition
           name="fade"
@@ -24,18 +18,17 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
 import Header from '@/layout/header/Header.vue'
-import TopNav from '@/layout/top_nav/TopNav.vue'
+import Nav from '@/layout/nav/Nav.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    TopNav
+    Nav
   }
 }
 </script>
@@ -44,23 +37,26 @@ export default {
 .root {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
-.header-wrap {
-  height: 60px;
-}
-.wrap {
-  height: calc(100% - 60px);
-}
-.left-nav-wrap {
+.nav-wrap {
   width: 201px;
   height: 100%;
   position: fixed;
   left: 0;
-  top: 60px;
+  top: 0;
 }
 .main-wrap {
+  width: calc(100% - 200px);
+  margin-left: 200px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  width: 100%;
+  height: 61px;
+}
+.content-wrap {
+  width: 100%;
 }
 </style>

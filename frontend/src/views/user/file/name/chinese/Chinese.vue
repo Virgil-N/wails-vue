@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 09:49:35
+ * Last Modified: 2021-11-15 04:27:49
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: 'chinese'
+    name: 'Chinese'
   }
 </script>
 
