@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 04:51:03
+ * Last Modified: 2021-11-16 10:04:58
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -11,29 +11,16 @@
  * -----
  */
 
-import {
-  getTokenByName,
-  setTokenByName,
-  removeTokenByName
-} from '@/utils/cookie.js'
-
-const state = {
-  navOpend: true
-}
-
-const mutations = {
-  SET_NAV_OPEND: (state, val) => {
-    state.navOpend = val
-    setTokenByName("navOpend", val)
-  }
-}
-
-const actions = {
-}
-
 export default {
   namespaced: true,
-  state,
-  mutations,
-  actions
+  state: {
+    navOpend: true
+  },
+  mutations: {
+    SET_NAV_OPEND: (state, val) => {
+      state.navOpend = val
+    }
+  },
+  actions: {
+  }
 }

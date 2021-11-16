@@ -1,8 +1,6 @@
 <template>
   <div class="root">
-    <div class="nav-wrap">
-      <Nav></Nav>
-    </div>
+    <Nav></Nav>
     <div class="main-wrap">
       <Header class="header"></Header>
       <div class="content-wrap">
@@ -38,16 +36,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.nav-wrap {
-  width: 201px;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
 .main-wrap {
-  width: calc(100% - 200px);
-  margin-left: 200px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;

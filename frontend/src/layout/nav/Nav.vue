@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 05:28:51
+ * Last Modified: 2021-11-16 11:40:41
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -29,32 +29,27 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 import { constantRoutes } from'@/routes/index.js'
 import NavItem from '@/layout/nav/components/NavItem.vue'
-import store from '@/store/index.js'
 
 export default {
   name: 'Nav',
+  data() {
+    return {
+      store: useStore()
+    }
+  },
   computed: {
     routeList() {
       return constantRoutes
     },
     navOpend() {
-      // return this.$store.getters.navOpend
-      return true
+      return this.store.state.app.navOpend
     }
   },
-  // watch: {
-  //   '$store.state.app.navOpend': {
-  //     handler: function(newVal, oldVal) {
-  //       // this.navOpend = newVal
-  //       console.log(newVal)
-  //     },
-  //     immediate: true
-  //   }
-  // },
   setup() {
-    // console.log(constantRoutes)
+    
   },
   components: {
     NavItem
@@ -64,7 +59,12 @@ export default {
 
 <style lang='scss' scoped>
 .nav-wrap {
+  width: 201px;
   height: 100%;
+  margin-top: 61px;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 .nav-menu {
   height: 100%;
