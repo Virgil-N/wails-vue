@@ -4,15 +4,15 @@
     <div class="main-wrap">
       <Header class="header"></Header>
       <div class="content-wrap">
-        <transition
+        <!-- <transition
           name="fade"
           mode="out-in"
-        >
+        > -->
           <!-- keep-alive 容易导致问题 -->
           <!-- <keep-alive :include="cachedViews"> -->
           <router-view />
           <!-- </keep-alive> -->
-        </transition>
+        <!-- </transition> -->
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 04:26:54
+ * Last Modified: 2021-11-16 02:05:46
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -40,7 +40,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.item)
+    
   }
 }
 </script>

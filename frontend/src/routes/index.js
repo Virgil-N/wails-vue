@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-15 11:45:46
+ * Last Modified: 2021-11-16 02:28:30
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -18,7 +18,8 @@ export const constantRoutes = [
     path: '/',
     name: 'root',
     meta: { hidden: true, title: '' },
-    redirect: '/home'
+    // redirect: '/home',
+    component: () => import('@/views/home/Home.vue')
   },
   {
     path: '/home',
@@ -28,7 +29,7 @@ export const constantRoutes = [
   },
   {
     path: '/user',
-    name: 'home',
+    name: 'user',
     meta: { hidden: false, title: '用户' },
     redirect: '/user/list',
     children: [
@@ -73,7 +74,7 @@ export const constantRoutes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_PATH),
+  history: createWebHistory(process.env.VITE_BASE_PATH),
   routes: constantRoutes
 })
 
