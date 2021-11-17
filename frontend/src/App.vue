@@ -3,7 +3,7 @@
     <Nav></Nav>
     <div class="main-wrap">
       <Header class="header"></Header>
-      <div class="content-wrap">
+      <div class="content-wrap" :class="navOpend ? 'close-nav nav-opend' : 'open-nav nav-closed'">
         <!-- <transition
           name="fade"
           mode="out-in"
@@ -24,6 +24,19 @@ import Nav from '@/layout/nav/Nav.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      navOpend: false
+    }
+  },
+  watch: {
+    '$store.state.app.navOpend': {
+      handler: function(newVal, oldVal) {
+        this.navOpend = newVal
+      },
+      immediate: true
+    }
+  },
   components: {
     Header,
     Nav
@@ -47,5 +60,20 @@ export default {
 }
 .content-wrap {
   width: 100%;
+  box-sizing: border-box;
+}
+.nav-closed {
+  padding-left: 63px;
+}
+.nav-opend {
+  padding-left: 201px;
+}
+.close-nav {
+  transition: padding-left 0.3s ease-in-out;
+  padding-left: 63px;
+}
+.open-nav {
+  transition: padding-left 0.3s ease-in-out;
+  padding-left: 201px;
 }
 </style>

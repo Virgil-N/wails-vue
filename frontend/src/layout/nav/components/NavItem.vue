@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-16 02:05:46
+ * Last Modified: 2021-11-16 04:58:13
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -18,18 +18,24 @@
         <template #title>{{item.meta.title || ""}}</template>
         <template v-for="v in item.children">
           <div :key="v.name" v-if="v.meta && !v.meta.hidden">
-            <Nav-Item :item="v"></Nav-Item>
+            <Nav-Item :item="v" :base="base + '/' + v.path"></Nav-Item>
           </div>
         </template>
       </el-sub-menu>
     </template>
     <template v-else>
-      <el-menu-item :index="item.name">{{item.meta.title || ""}}</el-menu-item>
+      <el-menu-item :index="item.name" @click="goto(item, base)">
+        <!-- <el-link :underline="false" :href="parseRoute(item, base)" class="nav-link">
+          {{ item.meta.title || "" }}
+        </el-link> -->
+        {{ item.meta.title || "" }} - {{item.path}} - {{base}}
+      </el-menu-item>
     </template>
   </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'NavItem',
@@ -37,14 +43,35 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    base: {
+      type: String,
+      default: ''
     }
   },
-  mounted() {
-    
+  setup() {
+    const router = useRouter()
+    return {
+      router
+    }
+  },
+  methods: {
+    goto(params, base) {
+      let href = ''
+      if (params.redirect) {
+        href = params.redirect
+      } else {
+        href = base.replaceAll(/[\/]+/g, '/')
+      }
+      console.log(href)
+      this.router.push(href)
+    }
   }
 }
 </script>
 
 <style lang='scss' scoped>
-
+.nav-link {
+  color: white;
+}
 </style>

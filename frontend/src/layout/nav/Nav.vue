@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-16 02:04:17
+ * Last Modified: 2021-11-16 04:43:48
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -22,7 +22,7 @@
       :collapse="navOpend"
       @select="handleSelect"
     >
-      <Nav-Item v-for="route in routeList" :key="route.name" :item="route" ></Nav-Item>
+      <Nav-Item v-for="route in routeList" :key="route.name" :item="route" :base="route.path"></Nav-Item>
     </el-menu>
   </div>
   

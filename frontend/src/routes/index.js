@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-16 02:28:30
+ * Last Modified: 2021-11-17 09:25:54
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -12,6 +12,7 @@
  */
 
 import { createRouter, createWebHistory } from 'vue-router'
+// import { h } from 'vue'
 
 export const constantRoutes = [
   {
@@ -31,45 +32,53 @@ export const constantRoutes = [
     path: '/user',
     name: 'user',
     meta: { hidden: false, title: '用户' },
-    redirect: '/user/list',
+    // redirect: '/user/list',
+    // component: { render() { return h('router-view') } }, // ~ 无效
+    component: () => import('@/views/Blank.vue'),
     children: [
       {
         path: 'list',
         name: 'user-list',
         meta: { hidden: false, title: '用户列表' },
-        component: () => import('@/views/home/Home.vue')
+        component: () => import('@/views/user/list/List.vue')
       },
       {
         path: 'file',
         name: 'user-file',
-        redirect: '/user/file/name',
+        // redirect: '/user/file/name/chinese',
         meta: { hidden: false, title: '用户资料' },
+        component: () => import('@/views/Blank.vue'),
         children: [
           {
             path: 'name',
             name: 'user-file-name',
-            redirect: '/user/file/name',
+            // redirect: '/user/file/name',
             meta: { hidden: false, title: '资料名称' },
+            component: () => import('@/views/Blank.vue'),
             children: [
               {
                 path: 'chinese',
                 name: 'user-file-name-chinese',
-                redirect: '/user/file/name/chinese',
                 meta: { hidden: false, title: '中文名称' },
-                component: () => import('@/views/home/Home.vue')
+                component: () => import('@/views/user/file/name/chinese/Chinese.vue')
               },
               {
                 path: 'english',
                 name: 'user-file-name-english',
-                redirect: '/user/file/name/english',
                 meta: { hidden: false, title: '英文名称' },
-                component: () => import('@/views/home/Home.vue')
+                component: () => import('@/views/user/file/name/english/English.vue')
               }
             ]
           }
         ]
       }
     ]
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: 'notFound',
+    component: () => import('@/views/home/Home.vue'),
+    meta: { hidden: true }
   }
 ]
 
