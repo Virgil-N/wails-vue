@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-17 09:27:36
+ * Last Modified: 2021-11-17 09:31:44
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -60,7 +60,6 @@ export default {
       } else {
         href = base.replaceAll(/[\/]+/g, '/')
       }
-      console.log(href)
       this.router.push(href)
     }
   }
