@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-16 04:43:48
+ * Last Modified: 2021-11-17 09:29:17
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -20,7 +20,6 @@
       text-color="#fff"
       active-text-color="#ffd04b"
       :collapse="navOpend"
-      @select="handleSelect"
     >
       <Nav-Item v-for="route in routeList" :key="route.name" :item="route" :base="route.path"></Nav-Item>
     </el-menu>
@@ -50,11 +49,6 @@ export default {
   },
   setup() {
     
-  },
-  methods: {
-    handleSelect() {
-      
-    }
   },
   components: {
     NavItem

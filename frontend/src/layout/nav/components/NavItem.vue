@@ -3,7 +3,7 @@
  * Author: Virgil-N
  * Description:
  * -----
- * Last Modified: 2021-11-16 04:58:13
+ * Last Modified: 2021-11-17 09:27:36
  * Modified By: Virgil-N (lieut9011@126.com)
  * -----
  * Copyright (c) 2019 - 2021 ⚐
@@ -25,10 +25,7 @@
     </template>
     <template v-else>
       <el-menu-item :index="item.name" @click="goto(item, base)">
-        <!-- <el-link :underline="false" :href="parseRoute(item, base)" class="nav-link">
-          {{ item.meta.title || "" }}
-        </el-link> -->
-        {{ item.meta.title || "" }} - {{item.path}} - {{base}}
+        {{ item.meta.title || "" }}
       </el-menu-item>
     </template>
   </div>
